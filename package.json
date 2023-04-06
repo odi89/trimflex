@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "tsc --preserveWatchOutput",
     "dev-server": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/index.js\"",
     "shellbye": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/shellbye/index.js\"",
     "read": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/shellbye/reads.js\"",
