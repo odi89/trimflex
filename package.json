@@ -7,8 +7,9 @@
   "scripts": {
     "dev-server": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/index.js\"",
     "shellbye": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/shellbye/index.js\"",
+    "read": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/shellbye/reads.js\"",
     "slash": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/shellbye/slash-commands.js\"",
-    "build": "tsc ",
+    "build": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/shellbye/reads.js\"",
     "build:dev": "test"
   },
   "keywords": [],
@@ -24,6 +25,7 @@
     "discord.js": "^14.9.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "tsc-watch": "^6.0.0"
+    "tsc-watch": "^6.0.0",
+    "zx": "^7.2.1"
   }
 }
