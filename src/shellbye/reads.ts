@@ -26,4 +26,4 @@ async function appendToMarkdown({ url, title, category }: { url: string, title: 
     return await fs.writeFileSync("testdo.md", testArray.join("\n"))
 }
 
-appendToMarkdown({ title: "Look at this dumb fuck", url: "https://www.youtube.com/watch?v=kNvy-0ohKAs", category: "Misc" })
+// appendToMarkdown({ title: "Interesting podcast episode", url: "https://www.youtube.com/watch?v=FPMyZA1_vMY", category: "Misc" })
