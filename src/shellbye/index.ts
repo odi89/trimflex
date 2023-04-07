@@ -64,7 +64,6 @@ const fetchChannels = async (message) => {
     const root = channels.find((chan) => chan.id === "1051586125766074378")
     const usersInRoot = root.members.map((member) => member.user)
 
-
     return usersInRoot
 }
 
