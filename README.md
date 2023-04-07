@@ -1,3 +1,3 @@
-# 💊Hamsterdam
-## Repo for the infamouse Discordchannel 
-### Lfg
+# Trimflex
+## Repo for the runner community Trimflex 
+
