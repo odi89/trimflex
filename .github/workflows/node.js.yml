@@ -28,4 +28,4 @@ jobs:
       - run: npm i
       - run: cp ../.env .
       - run: npm run start
-      - run: pm2 start dist/shellbye/index.js --watch
+      - run: pm2 start dist/index.js --watch
