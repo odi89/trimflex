@@ -1,3 +1,2 @@
-# 💊Hamsterdam
-## Repo for the infamouse Discordchannel 
-### Lfg
+# Trimflex
+## Repo for Trimflex bot
