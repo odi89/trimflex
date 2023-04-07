@@ -1,4 +1,4 @@
-const { Collection } = require("discord.js");
+import { Collection } from "discord.js";
 
 export default async (client, message) => {
     if (message.author.bot) { return }
@@ -14,8 +14,7 @@ export default async (client, message) => {
     if (client.commandes.has(command)) { cmd = client.commandes.get(command) }
     else if (client.aliases.has(command)) { cmd = client.commandes.get(client.aliases.get(command)) }
     if (!cmd) return;
-
-    const props = require(`../command/${cmd.dir}/${cmd.name}`);
+    const props = await import(`../command/${cmd.dir}/${cmd.name}`).then((settings) => settings);
 
     // COOLDOWNS & ERROR
     //@ts-ignore

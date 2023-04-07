@@ -1,6 +1,6 @@
 import chalk from "chalk"
 import dayjs from "dayjs";
-const { LoggerError } = require('./CustomError');
+import { LoggerError } from './CustomError.js'
 const timestamp = `[${dayjs().format(" HH:mm:ss | DD-MM-YYYY")}]`;
 
 export function log(content) {
@@ -23,7 +23,7 @@ export function warn(content) {
     console.log(`${chalk.cyan(timestamp)} ${chalk.yellow.underline(('[WARN]'))} ${content}`)
 }
 
-function info(content) {
+export function info(content) {
     if (!content) throw new LoggerError('No text found');
     console.log(`${chalk.cyan(timestamp)} ${chalk.magenta.underline(('[INFO]'))} ${content}`)
 }
