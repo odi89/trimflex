@@ -81,7 +81,6 @@ client.on("messageCreate", async (message) => {
         const channels = await fetchChannels(message)
     }
 
-
 }
 )
 
