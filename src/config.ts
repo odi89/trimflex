@@ -3,6 +3,6 @@ dotenv.config()
 export default ({
     token: process.env.TOKEN,
     botID: process.env.CLIENT_ID,
-    prefix: process.env.CLIENT_ID,
+    prefix: process.env.PREFIX,
     owner: [process.env.GUILD_ID],
 })

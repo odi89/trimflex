@@ -6,10 +6,10 @@
   "type": "module",
   "scripts": {
     "start": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/index.js\"",
+    "slash": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/slash.js\"",
     "dev-server": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/index.js\"",
     "shellbye": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/shellbye/index.js\"",
     "read": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/shellbye/reads.js\"",
-    "slash": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/shellbye/slash-commands.js\"",
     "build": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/shellbye/reads.js\"",
     "build:dev": "test"
   },

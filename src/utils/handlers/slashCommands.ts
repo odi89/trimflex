@@ -6,7 +6,6 @@ const __dirname = path.dirname(__filename);
 
 export default async function (client) {
     fs.readdir(`${__dirname}/../../slashCommands/`, (err, files) => {
-        console.log(files)
         if (err) client.logger.error(err);
         files.forEach(dir => {
             fs.readdir(`${__dirname}/../../slashCommands/${dir}/`, (err, file) => {

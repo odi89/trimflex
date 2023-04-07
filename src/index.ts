@@ -24,6 +24,7 @@ interface ClientCommands {
     logger?: any
     color?: any
     config?: any
+    cooldowns?: any
 }
 interface ExtendedClient extends Client<boolean>, ClientCommands { }
 
@@ -45,7 +46,7 @@ const client: ExtendedClient = new Client({
 client.commands = new Collection()
 client.slash = new Collection();
 client.aliases = new Collection();
-const cooldowns = new Collection();
+client.cooldowns = new Collection();
 
 //SET UTILS
 client.logger = { log, loader, error: logError, warn, info, database }
@@ -56,12 +57,9 @@ client.color = { chalkcolor, messagecolor }
 client.config = config
 
 // LOAD THE 4 HANDLERS
-declare function require(name: string);
 const handlers = ["error", "commands", "slashCommands", "event"]
 handlers.forEach((file) => {
     handlerObject[file](client)
-    // if (file === "slashCommands") {
-    // }
 })
 
 client.login(client.config.token); 

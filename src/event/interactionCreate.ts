@@ -7,12 +7,11 @@ export default async (client, interaction) => {
 
         const command = client.slash.get(interaction.commandName)
         try {
-            // @ts-ignore
-            if (!cooldowns.has(command.name)) { cooldowns.set(command.name, new Collection()); }
+            if (!client.cooldowns.has(command.name)) { client.cooldowns.set(command.name, new Collection()); }
 
             const now = Date.now();
             // @ts-ignore
-            const timestamps = cooldowns.get(command.name);
+            const timestamps = client.cooldowns.get(command.name);
             const cooldownAmount = (command.cooldown || 2) * 1000;
 
             if (timestamps.has(interaction.user.id)) {

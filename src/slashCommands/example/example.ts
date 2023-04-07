@@ -1,5 +1,5 @@
 export default ({
-    name: 'Ping',
+    name: 'example',
     description: 'Very simple example of a command to understand how to use this template',
     usage: '<prefix>example [ping]', //OPTIONAL (for the help cmd)
     examples: ['example', 'example ping:true'], //OPTIONAL (for the help cmd)
@@ -10,12 +10,13 @@ export default ({
         {
             name: 'ping',
             description: "Get the bot's latency",
-            type: 3, required: false,
+            type: 3, required: true,
             choices: [{ name: "yes", value: 'true' }, { name: "no", value: 'false' }]
         }
     ], // OPTIONAL, (/) command options ; read https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
 
     run: async (client, interaction) => {
+        console.log(client)
         if (interaction.options.getString('ping') === 'true') {
             interaction.reply({ content: `Hello world !\n> Bot's latency : **${Math.round(client.ws.ping)}ms**` });
         } else {
