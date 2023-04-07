@@ -1,12 +1,21 @@
 import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 dotenv.config()
-import { Client, IntentsBitField, EmbedBuilder } from "discord.js"
+import { Client, IntentsBitField, EmbedBuilder, Partials } from "discord.js"
 
 const client = new Client({
-    intents: [IntentsBitField.Flags.Guilds, IntentsBitField.Flags.GuildMembers, IntentsBitField.Flags.GuildMessages, IntentsBitField.Flags.MessageContent],
+    intents: [IntentsBitField.Flags.Guilds,
+    IntentsBitField.Flags.GuildMembers, IntentsBitField.Flags.GuildMessages,
+    IntentsBitField.Flags.MessageContent,
+    IntentsBitField.Flags.GuildMessageReactions],
+    partials: [
+        Partials.Message,
+        Partials.Reaction
+    ]
+
 
 
 })
+
 
 client.on("ready", (c) => {
     console.log(`${c.user.tag} is online🚀`)
@@ -15,7 +24,7 @@ client.on("ready", (c) => {
 
 client.on("messageCreate", async (message) => {
     if (message.author.bot) return;
-
+    console.log(message)
 })
 
 
@@ -66,10 +75,19 @@ const fetchChannels = async (message) => {
 
     return usersInRoot
 }
+// On reactions
+client.on("messageReactionAdd", async (reaction) => {
+    if (reaction.partial) {
+        await reaction.fetch()
+    }
+    const { message } = reaction
+    console.log(message)
+    console.log("Reactions")
+    console.log(reaction)
+})
 
 client.on("messageCreate", async (message) => {
     if (message.content === "embed") {
-
         const embed = new EmbedBuilder().setTitle("Embed title").setDescription("This is an description").setColor("Random").addFields({ name: "Field title", value: "Some random title", inline: true }, { name: "Second Field title", value: "Some other title", inline: true })
         message.channel.send({ embeds: [embed] })
 
