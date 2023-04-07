@@ -1,5 +1,5 @@
 export default ({
-    name: 'Hi',
+    name: 'example',
     description: 'Very simple example of a command to understand how to use this template',
     usage: '<prefix>example [ping]', //OPTIONAL (for the help cmd)
     examples: ['example', 'example ping'], //OPTIONAL (for the help cmd)

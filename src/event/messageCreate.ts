@@ -6,22 +6,22 @@ export default async (client, message) => {
 
     if (message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))) { return message.channel.send(`Hi, I'm ${client.user.username}! In this server, my prefix is \`${prefix}\``) }
     if (!message.content.startsWith(prefix)) { return }
-
-    const command = message.content.split(' ')[0].slice(prefix.length).toLowerCase();
-    const args = message.content.split(' ').slice(1);
+    console.log(message.content.split(" "))
+    // const command = message.content.split(' ')[0].slice(prefix.length).toLowerCase();
+    const command = message.content.split(' ')[1]
+    const args = message.content.split(' ').slice(2);
     let cmd;
-
-    if (client.commandes.has(command)) { cmd = client.commandes.get(command) }
+    if (client.commands.has(command)) { cmd = client.commands.get(command) }
     else if (client.aliases.has(command)) { cmd = client.commandes.get(client.aliases.get(command)) }
     if (!cmd) return;
-    const props = await import(`../command/${cmd.dir}/${cmd.name}`).then((settings) => settings);
+    const props = await import(`../command/${cmd.dir}/${cmd.name}.js`).then((settings) => settings.default);
 
     // COOLDOWNS & ERROR
     //@ts-ignore
-    if (!cooldowns.has(props.name)) { cooldowns.set(props.name, new Collection()); }
+    if (!client.cooldowns.has(props.name)) { client.cooldowns.set(props.name, new Collection()); }
     const now = Date.now();
     //@ts-ignore
-    const timestamps = cooldowns.get(props.name);
+    const timestamps = client.cooldowns.get(props.name);
     const cooldownAmount = (props.cooldown || 2) * 1000;
 
     if (timestamps.has(message.author.id)) {

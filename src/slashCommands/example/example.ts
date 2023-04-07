@@ -16,7 +16,6 @@ export default ({
     ], // OPTIONAL, (/) command options ; read https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
 
     run: async (client, interaction) => {
-        console.log(client)
         if (interaction.options.getString('ping') === 'true') {
             interaction.reply({ content: `Hello world !\n> Bot's latency : **${Math.round(client.ws.ping)}ms**` });
         } else {
