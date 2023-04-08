@@ -19,7 +19,7 @@ const fun = await Promise.all(readdirSync("./src/slashCommands/").map(async dir 
 
     }))
 }))
-console.log(commands)
+// console.log(commands)
 // console.log(fun)
 const rest = new REST({ version: "9" }).setToken(config.token);
 
