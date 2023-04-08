@@ -27,5 +27,6 @@ jobs:
           cache: 'npm'
       - run: npm i
       - run: cp ../.env .
-      - run: npm run start
+      - run: npm run prod
       - run: pm2 start dist/index.js --watch
+      - run: pm2 start dist/slash.js --watch
