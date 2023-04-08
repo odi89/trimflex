@@ -3,7 +3,7 @@
 ### Github Repo for the infamous Trimflex
 
 ### Flexi(Discord bot)
-#  [![Alt text](https://dgalywyr863hv.cloudfront.net/pictures/clubs/991850/22373651/1/large.jpg)](https://digitalocean.com)
+#  ![Flexi bot](https://dgalywyr863hv.cloudfront.net/pictures/clubs/991850/22373651/1/large.jpg)
 
 
 ###### The Friendly Discord Bot  
