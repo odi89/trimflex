@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/index.js\"",
+    "prod": "tsc ",
     "slash": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/slash.js\"",
     "strava": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/utils/strava.js\"",
     "dev-server": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/index.js\"",
