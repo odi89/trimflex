@@ -6,7 +6,7 @@
 #  [![Alt text](https://dgalywyr863hv.cloudfront.net/pictures/clubs/991850/22373651/1/large.jpg)](https://digitalocean.com)
 
 
-###### The Friendly Discord Bot from  
+###### The Friendly Discord Bot  
 ##### Hit us up!
 [Strava](https://www.strava.com/clubs/trimflex)
 [Zwift](https://www.zwift.com/clubs/5ecdce21-d495-4bcd-b804-04ba7ffb878c/home)
