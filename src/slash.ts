@@ -5,6 +5,7 @@ import { Routes } from 'discord-api-types/v9'
 import { readdirSync } from 'fs';
 import path from "path"
 import config from "./config.js"
+import { fetchLeaderboardImage } from './utils/strava.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 

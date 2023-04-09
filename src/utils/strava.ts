@@ -1,3 +1,5 @@
+import { EmbedBuilder } from 'discord.js';
+import puppeteer from 'puppeteer';
 import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 dotenv.config()
 import axios from "axios"
@@ -107,4 +109,47 @@ export const transformStatisticNaive = (data) => {
         totalMoving
     }
 }
+export const fetchLeaderboardImage = async (path: string) => {
+    const browser = await puppeteer.launch({ headless: false });
+    try {
+        const page = await browser.newPage();
+        await page.goto("https://www.strava.com/clubs/991850");
+        const cookieBtn = (await page.$eval(".btn-accept-cookie-banner", (btn: any) => btn.click()))
+        const leaderboard = await page.$("body > div.view > div.page.container > div:nth-child(4) > div.spans11 > div > div:nth-child(2) > div.leaderboard")
+        await leaderboard.screenshot({ path: `./dist/images/tavle.png` });
+    } catch (e) {
+        console.log(e)
+    } finally {
+        await browser.close();
+    }
+}
+export const leaderBoardEmbed = ({ titleText, pathToImage }) => {
+    // const leaderboardEmbed = new EmbedBuilder()
+    //     .setColor(0x0099FF)
+    //     .setTitle(titleText)
+    //     .setURL('https://www.strava.com/clubs/991850')
+    //     .setDescription('Leaderboard')
+    //     .setThumbnail(pathToImage)
+    //     .setImage(pathToImage)
+    //     .setTimestamp()
+    //     .setFooter({ text: 'Made with ❤️', iconURL: 'https://static.wixstatic.com/media/c702b4_27e519f6628e4f1db4a43175997fedce~mv2.png/v1/fill/w_177,h_82,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/1080x500_primary-logo-transparent-black_trimflex.png' });
 
+    const exampleEmbed = new EmbedBuilder()
+        .setColor(0x0099FF)
+        .setTitle(titleText)
+        .setURL('https://www.strava.com/clubs/991850')
+        .setAuthor({ name: 'Some name', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://discord.js.org' })
+        .setDescription('Some description here')
+        .setThumbnail('https://www.strava.com/clubs/991850')
+        .addFields(
+            { name: 'Regular field title', value: 'Some value here' },
+            { name: '\u200B', value: '\u200B' },
+            { name: 'Inline field title', value: 'Some value here', inline: true },
+            { name: 'Inline field title', value: 'Some value here', inline: true },
+        )
+        .addFields({ name: 'Inline field title', value: 'Some value here', inline: true })
+        .setImage('https://www.strava.com/clubs/991850')
+        .setTimestamp()
+        .setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
+    return exampleEmbed
+}
