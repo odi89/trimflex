@@ -38,7 +38,8 @@ export default ({
             message.reply("To sek jeg fikser...")
             await fetchLeaderboardImage(imagePath)
             // const image = 
-            const leaderboardEmbed = leaderBoardEmbed({ titleText: "Trimflex leaderboard", pathToImage: "./dist/images/tavle.png" })
+            // const leaderboardEmbed = leaderBoardEmbed({ titleText: "Trimflex leaderboard", pathToImage: "https://78bb-84-211-208-5.ngrok-free.app/api/tavle.png" })
+            const leaderboardEmbed = leaderBoardEmbed({ titleText: "Trimflex leaderboard", pathToImage: `${client.url}/api/tavle.png` })
             message.reply({ embeds: [leaderboardEmbed] });
 
             // message.send({ embeds: [exampleEmbed] });

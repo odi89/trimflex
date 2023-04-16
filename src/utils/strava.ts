@@ -110,13 +110,13 @@ export const transformStatisticNaive = (data) => {
     }
 }
 export const fetchLeaderboardImage = async (path: string) => {
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch({ headless: true });
     try {
         const page = await browser.newPage();
         await page.goto("https://www.strava.com/clubs/991850");
         const cookieBtn = (await page.$eval(".btn-accept-cookie-banner", (btn: any) => btn.click()))
         const leaderboard = await page.$("body > div.view > div.page.container > div:nth-child(4) > div.spans11 > div > div:nth-child(2) > div.leaderboard")
-        await leaderboard.screenshot({ path: `./dist/images/tavle.png` });
+        await leaderboard.screenshot({ path: `./dist/public/tavle.png` });
     } catch (e) {
         console.log(e)
     } finally {
@@ -134,22 +134,24 @@ export const leaderBoardEmbed = ({ titleText, pathToImage }) => {
     //     .setTimestamp()
     //     .setFooter({ text: 'Made with ❤️', iconURL: 'https://static.wixstatic.com/media/c702b4_27e519f6628e4f1db4a43175997fedce~mv2.png/v1/fill/w_177,h_82,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/1080x500_primary-logo-transparent-black_trimflex.png' });
 
-    const exampleEmbed = new EmbedBuilder()
-        .setColor(0x0099FF)
-        .setTitle(titleText)
-        .setURL('https://www.strava.com/clubs/991850')
-        .setAuthor({ name: 'Some name', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://discord.js.org' })
-        .setDescription('Some description here')
-        .setThumbnail('https://www.strava.com/clubs/991850')
-        .addFields(
-            { name: 'Regular field title', value: 'Some value here' },
-            { name: '\u200B', value: '\u200B' },
-            { name: 'Inline field title', value: 'Some value here', inline: true },
-            { name: 'Inline field title', value: 'Some value here', inline: true },
-        )
-        .addFields({ name: 'Inline field title', value: 'Some value here', inline: true })
-        .setImage('https://www.strava.com/clubs/991850')
-        .setTimestamp()
-        .setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
+    const exampleEmbed = new EmbedBuilder().setImage(pathToImage)
+    // .setColor(0x0099FF)
+    // .setTitle(titleText)
+    // .setURL(pathToImage)
+    // .setAuthor({ name: 'Some name', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://discord.js.org' })
+    // .setDescription('Some description here')
+    // .setThumbnail(pathToImage)
+    // .addFields(
+    //     { name: 'Regular field title', value: 'Some value here' },
+    //     { name: '\u200B', value: '\u200B' },
+    //     { name: 'Inline field title', value: 'Some value here', inline: true },
+    //     { name: 'Inline field title', value: 'Some value here', inline: true },
+    // )
+    // .addFields({ name: 'Inline field title', value: 'Some value here', inline: true })
+    // .setImage(pathToImage)
+    // .setTimestamp()
+    // .setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
     return exampleEmbed
+}
+export const imageEmbed = ({ pathToImage }) => {
 }

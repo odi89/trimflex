@@ -2,6 +2,7 @@ import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-d
 dotenv.config()
 import { Client, IntentsBitField, EmbedBuilder, Partials, Collection } from "discord.js"
 import { log, loader, error as logError, warn, info, database, } from "./utils/logger.js"
+import ngrok from "ngrok"
 import { chalkcolor, messagecolor } from './utils/color.js'
 import commands from './utils/handlers/commands.js'
 import config from './config.js'
@@ -25,6 +26,7 @@ interface ClientCommands {
     color?: any
     config?: any
     cooldowns?: any
+    url?: any
 }
 interface ExtendedClient extends Client<boolean>, ClientCommands { }
 
@@ -55,11 +57,12 @@ client.color = { chalkcolor, messagecolor }
 //SET CONFIG
 
 client.config = config
-
+// FIX ngrok
+client.url = await ngrok.connect(Number(process.env.PORT))
 // LOAD THE 4 HANDLERS
 const handlers = ["error", "commands", "slashCommands", "event"]
-handlers.forEach((file) => {
-    handlerObject[file](client)
-})
+Promise.all(handlers.map(async (file) => {
+    await handlerObject[file](client)
+}))
 
 client.login(client.config.token); 

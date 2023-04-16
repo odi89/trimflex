@@ -5,6 +5,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default async function (client) {
+    console.log("slashCommands")
     fs.readdir(`${__dirname}/../../slashCommands/`, (err, files) => {
         if (err) client.logger.error(err);
         files.forEach(dir => {

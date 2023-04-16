@@ -9,11 +9,13 @@
     "prod": "tsc ",
     "slash": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/slash.js\"",
     "strava": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/utils/strava.js\"",
-    "dev-server": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/index.js\"",
+    "dev-server": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/server/index.js\"",
     "shellbye": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/shellbye/index.js\"",
     "read": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/shellbye/reads.js\"",
     "build": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/shellbye/reads.js\"",
-    "build:dev": "test"
+    "build:dev": "test",
+    "copy-files": "cp -r  src/public/ ./dist/",
+    "clean": "rm -rf ./dist"
   },
   "keywords": [],
   "author": "",
@@ -31,6 +33,7 @@
     "discord.js": "^14.9.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "ngrok": "^4.3.3",
     "puppeteer": "^19.8.5",
     "tsc-watch": "^6.0.0",
     "zx": "^7.2.1"
